@@ -12,10 +12,10 @@
     flex-direction: column;
     position: relative;
     height: calc(100vh - 4rem);
-    max-height: 1000px;
+    max-height: 100rem;
     aspect-ratio: 9 / 16;
     border: 5px solid #000;
-    border-radius: 1.5rem;
+    border-radius: 0rem;
     overflow: hidden;
     background-color: #E1E1E6;
 
@@ -33,10 +33,11 @@
 
       i {
         font-size: 2rem;
+        cursor: pointer;
+      }
 
-        &:last-child {
-          margin-left: auto;
-        }
+      label:last-child {
+        margin: 0 0.7rem 0 auto;
       }
 
       p {
@@ -52,6 +53,68 @@
         border: 1px solid #AFB5D8;
         border-radius: 10rem;
       }
+    }
+
+    .blackFilter {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      display: none;
+      z-index: 9998;
+    }
+
+    .sidebar {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1rem;
+      width: 80%;
+      height: 100%;
+      right: -80%;
+      background-color: #211959;
+      color: #fff;
+      z-index: 9999;
+      transition: 200ms;
+
+      i {
+        font-size: 1.5rem;
+        width: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      label {
+        width: fit-content;
+        align-self: flex-end;
+      }
+
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        
+        li {
+          display: flex;
+          gap: 0.6rem;
+          cursor: pointer;
+        }
+      }
+
+    }
+
+    .sidebarCheckbox {
+      display: none;
+    }
+
+    .sidebarCheckbox:checked ~ .sidebar {
+      right: 0px;
+    }
+
+    .sidebarCheckbox:checked ~ .blackFilter {
+      display: block;
     }
 
     .messages {

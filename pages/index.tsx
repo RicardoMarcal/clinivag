@@ -63,8 +63,30 @@ export default function Home() {
             <i className="fa-solid fa-arrow-left"></i>
             <img src="univag.png" alt="Logo da UNIVAG" />
             <p>Univag Clínica</p>
-            <i className="fa-solid fa-ellipsis-vertical"></i>
+            <label htmlFor="sidebarCheckbox"><i className="fa-solid fa-ellipsis-vertical"></i></label>
           </div>
+
+          <input type="checkbox" id="sidebarCheckbox" className={styles.sidebarCheckbox} />
+          
+          <div className={styles.blackFilter}></div>
+          <nav id="sidebar" className={styles.sidebar}>
+            <label htmlFor="sidebarCheckbox"><i className={`fa-solid fa-xmark ${styles.close}`}></i></label>
+              <ul>
+                <li>
+                  <i className="fa-solid fa-house"></i>
+                  <p>Página inicial</p>
+                </li>
+                <li>
+                  <i className="fa-solid fa-calendar"></i>
+                  <p>Agendar consulta</p>
+                </li>
+                <li>
+                  <i className="fa-solid fa-plus"></i>
+                  <p>Gerenciar agendamentos</p>
+                </li>
+              </ul>
+          </nav>
+          
           <div id="messages" className={styles.messages}>
             {messages.map((message, key) => 
               <div key={key} className={`${styles.message} ${styles[message.sender]}`}>
