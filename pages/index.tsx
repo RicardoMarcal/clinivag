@@ -29,17 +29,23 @@ export default function Home() {
       sender: 'user'
     }])
 
-    setMessages(val => [...val, {
-      text: "O app está em desenvolvimento.",
-      sender: 'bot'
-    }])
+    setTimeout(() => {
+      setMessages(val => [...val, {
+        text: "O app está em desenvolvimento.",
+        sender: 'bot'
+      }])
+      goToBottom()
+  }, 800)
+    
 
     setCurrent(val => val++)
+    goToBottom()
+  }
 
+  const goToBottom = () => {
     setTimeout(() => {
       document.getElementById("messages")?.scrollTo(0, document.getElementById("messages")!.scrollHeight)
     }, 1)
-
   }
   
 

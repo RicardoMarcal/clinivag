@@ -12,7 +12,7 @@
     flex-direction: column;
     position: relative;
     height: calc(100vh - 4rem);
-    max-height: 680px;
+    max-height: 1000px;
     aspect-ratio: 9 / 16;
     border: 5px solid #000;
     border-radius: 1.5rem;
@@ -109,6 +109,10 @@
         &:first-child {
           margin-top: auto;
         }
+
+        &:last-child{
+          animation: fadein 200ms ease-in;
+        }
         
       }
 
@@ -152,4 +156,23 @@
 
   }
 
+}
+
+@keyframes fadein {
+  from { transform: translateY(0.6rem); }
+  to   { transform: translateY(0); }
+}
+
+
+
+@media screen and (max-width: 680px) {
+  .main {
+    .chat {
+      height: 100vh;
+      max-height: initial;
+      aspect-ratio: initial;
+      border: 0;
+      border-radius: 0;
+    }
+  }
 }
