@@ -15,7 +15,7 @@
     max-height: 100rem;
     aspect-ratio: 9 / 16;
     border: 5px solid #000;
-    border-radius: 0rem;
+    border-radius: 1rem;
     overflow: hidden;
     background-color: #E1E1E6;
 
@@ -194,8 +194,9 @@
     .inputs {
       gap: 0.7rem;
 
-      select {
+      .input {
         flex: 8;
+        padding: 0 1rem;
         border-radius: 10rem;
         height: 2.5rem;
         border: 1px solid #AFB5D8;
@@ -208,6 +209,11 @@
         background-color: #AFB5D8;
         border: 1px solid #AFB5D8;
         cursor: pointer;
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
 
         i {
           font-size: 1.3rem;
