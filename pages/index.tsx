@@ -168,7 +168,7 @@ export default function Home() {
                     <div className={styles.top}>
                         <i className="fa-solid fa-arrow-left"></i>
                         <img src="univag.png" alt="Logo da UNIVAG" />
-                        <p>Univag Clínica</p>
+                        <p>Clinivag</p>
                         <label htmlFor="sidebarCheckbox"><i className="fa-solid fa-ellipsis-vertical"></i></label>
                     </div>
 
