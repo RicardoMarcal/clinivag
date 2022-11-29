@@ -10,7 +10,7 @@ import { AgendamentosContext } from './_app'
 
 export default function Home() {
     const [current, setCurrent] = useState<number>(0)
-    const [messages, setMessages] = useState<messageType[]>([{ text: "Olá, desejaria fazer um atendimento em nossa Clínica?", sender: 'bot' }])
+    const [messages, setMessages] = useState<messageType[]>([{ text: "Olá, desejaria fazer um agendamento em nossa Clínica?", sender: 'bot' }])
     const [userData, setUserData] = useState<userDataType>({} as userDataType)
     const { agendamentos, setAgendamentos } = useContext(AgendamentosContext)
 
@@ -34,7 +34,7 @@ export default function Home() {
 
                 setTimeout(() => {
                     setMessages(val => [...val, {
-                        text: "Desejaria fazer outro atendimento em nossa Clínica?",
+                        text: "Desejaria fazer outro agendamento em nossa Clínica?",
                         sender: 'bot'
                     }])
                     button.disabled = false;
