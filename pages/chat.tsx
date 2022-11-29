@@ -190,7 +190,7 @@ export default function Home() {
                     <div id="messages" className={styles.messages}>
                         {messages.map((message, key) =>
                             <div key={key} className={`${styles.message} ${styles[message.sender]}`}>
-                                {message.text}
+                                <p>{message.text}</p>
                             </div>
                         )}
                     </div>
