@@ -70,10 +70,9 @@ export default function Home() {
         }
 
 
-        if(goto >= options.length || goto == past){
-            button.disabled = true;
-            return
-        }
+        if(goto >= options.length || goto == past) return
+
+        button.disabled = true;
 
         setTimeout(() => {
             setMessages(val => [...val, {
