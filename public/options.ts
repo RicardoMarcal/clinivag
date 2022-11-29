@@ -3,8 +3,7 @@ export const options = [
       question: "Olá, desejaria fazer um atendimento na nossa clínica?",
       input: "select",
       answers: [
-        {value: "Sim", goto: 1},
-        {value: "Não", goto: 0}
+        {value: "Sim", goto: 1}
       ]
     },
     {
@@ -29,9 +28,9 @@ export const options = [
       question: "Informe o horário que você deseja ser atendido.",
       input: "select",
       answers: [
-        {value: "7:00 da manhã.", goto: 4},
-        {value: "13:30 da tarde.", goto: 4},
-        {value: "Agendar outro dia.", goto:2}
+        {value: "7:00 da manhã", goto: 4},
+        {value: "13:30 da tarde", goto: 4},
+        {value: "Agendar outro dia", goto:2}
       ]
     },
     {

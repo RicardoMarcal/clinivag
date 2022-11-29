@@ -1,50 +1,49 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from '../styles/Chat.module.scss'
 import { options } from '../public/options'
 import Link from 'next/link'
-
-interface messageType {
-    text: string
-    sender: string
-}
-
-interface userDataType {
-    desejaAtendimento: string
-    especialista: string
-    data: Date
-    horario: string
-    cpf: string
-}
+import HeaderSidebar from '../components/HeaderSidebar'
+import { messageType, userDataType } from '../types/types'
+import { AgendamentosContext } from './_app'
 
 export default function Home() {
     const [current, setCurrent] = useState<number>(0)
     const [messages, setMessages] = useState<messageType[]>([{ text: "Olá, desejaria fazer um atendimento em nossa Clínica?", sender: 'bot' }])
     const [userData, setUserData] = useState<userDataType>({} as userDataType)
+    const { agendamentos, setAgendamentos } = useContext(AgendamentosContext)
 
     useEffect(() => {
         const button = document.getElementById("sendButton") as HTMLButtonElement
 
+        const messageStartWords = ["Ótimo", "Excelente", "Perfeito", "Maravilha"]
+        const messageStartWord = messageStartWords[Math.floor(Math.random()*messageStartWords.length)]
         if(current >= options.length){
             setCurrent(0)
             setTimeout(() => {
                 setMessages(val => [...val, {
-                    text: JSON.stringify(userData),
+                    text: `${messageStartWord}! Foi agendado uma consulta com um ${userData.especialista} 
+                            no dia ${new Date(userData.data).toLocaleDateString()} às ${userData.horario}. 
+                            Lembre-se de verificar o check-in com 1 dia de antecedência para confiar a sua presença.`,
                     sender: 'bot'
                 }])
                 button.disabled = false;
+
+                setAgendamentos([...agendamentos, userData])
+
                 goToBottom()
             }, 800)
         }
 
-    }, [current, userData])
+    }, [current, userData, agendamentos, setAgendamentos])
     
 
     const answer = (e: React.MouseEvent) => {
         e.preventDefault()
         const button = document.getElementById("sendButton") as HTMLButtonElement
         const input = options[current].input;
+        const past = current;
         let goto = 0
         
         if(button.disabled) return
@@ -61,9 +60,10 @@ export default function Home() {
             break
         }
 
-        button.disabled = true;
 
-        if(goto >= options.length) return
+        if(goto >= options.length || goto == past) return
+        
+        button.disabled = true;
 
         setTimeout(() => {
             setMessages(val => [...val, {
@@ -103,14 +103,19 @@ export default function Home() {
     const answerDate = () => {
         const date = document.getElementById("date") as HTMLInputElement
         const goto = options[current].answers[0].goto
-        const answer = date.value
+        const answer = date.value.replace(/-/g, '\/').replace(/T.+/, '')
+
+        if(answer.trim().length == 0) {
+            alert("Escolha uma data.");
+            return current
+        }
 
         setUserData(userData => {return {...userData, data: new Date(answer)}})
 
         setCurrent(() => goto)
 
         setMessages(val => [...val, {
-            text: `Quero meu atendimento no dia ${answer}.`,
+            text: `Quero meu atendimento no dia ${new Date(answer).toLocaleDateString()}.`,
             sender: 'user'
         }])
         goToBottom()
@@ -122,6 +127,11 @@ export default function Home() {
         const cpf = document.getElementById("cpf") as HTMLInputElement
         const goto = options[current].answers[0].goto
         const answer = cpf.value
+
+        if(answer.trim().length != 14) {
+            alert("Digite o seu CPF completo.");
+            return current
+        }
 
         setUserData(userData => {return {...userData, cpf: answer}})
 
@@ -166,37 +176,7 @@ export default function Home() {
 
             <main className={styles.main}>
                 <div className={styles.wrapper}>
-                    <div className={styles.top}>
-                        <Link href="/"><i className="fa-solid fa-arrow-left"></i></Link>
-                        <img src="univag.png" alt="Logo da UNIVAG" />
-                        <p>Clinivag</p>
-                        <label htmlFor="sidebarCheckbox"><i className="fa-solid fa-ellipsis-vertical"></i></label>
-                    </div>
-
-                    <input type="checkbox" id="sidebarCheckbox" className={styles.sidebarCheckbox} />
-
-                    <div className={styles.blackFilter}></div>
-                    <nav id="sidebar" className={styles.sidebar}>
-                        <label htmlFor="sidebarCheckbox"><i className={`fa-solid fa-xmark ${styles.close}`}></i></label>
-                        <ul>
-                            <li>
-                                <Link href="/">
-                                <i className="fa-solid fa-house"></i>
-                                <p>Página inicial</p>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/chat">
-                                <i className="fa-solid fa-calendar"></i>
-                                <p>Agendar consulta</p>
-                                </Link>
-                            </li>
-                            <li>
-                                <i className="fa-solid fa-plus"></i>
-                                <p>Gerenciar agendamentos</p>
-                            </li>
-                        </ul>
-                    </nav>
+                    <HeaderSidebar />
 
                     <div id="messages" className={styles.messages}>
                         {messages.map((message, key) =>

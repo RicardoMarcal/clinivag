@@ -39,17 +39,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 1rem;
             width: 100%;
             margin: 3rem 0;
+            padding: 0 3rem;
 
-            button {
-              font-size: 1.5rem;
+            a {
+              font-size: 1.1rem;
               padding: 0.2rem 0.7rem;
-              border-radius: 1rem;
+              border-radius: 0.5rem;
               border: 2px solid #28166F;
               color: #28166F;
+              background-color: #abc;
               font-weight: bolder;
               cursor: pointer;
+              width: 100%;
+              text-align: center;
             }
           }
       }

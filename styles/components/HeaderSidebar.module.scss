@@ -1,0 +1,96 @@
+.top {
+    gap: 0.4rem;
+    color: #AFB5D8;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 0.4rem 0.7rem;
+    background-color: #F7F7F7;
+    max-height: 3.75rem;
+    z-index: 10;
+
+    i {
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    label:last-child {
+        margin: 0 0.7rem 0 auto;
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    img {
+        width: 3rem;
+        aspect-ratio: 1 / 1;
+        object-fit: contain;
+        background-color: #fff;
+        border: 1px solid #AFB5D8;
+        border-radius: 10rem;
+    }
+}
+
+.blackFilter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 9998;
+}
+
+.sidebar {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    width: 80%;
+    height: 100%;
+    right: -80%;
+    background-color: #211959;
+    color: #fff;
+    z-index: 9999;
+    transition: 200ms;
+
+    i {
+        font-size: 1.5rem;
+        width: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    label {
+        width: fit-content;
+        align-self: flex-end;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    
+        li, li a {
+            display: flex;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+    }
+}
+
+
+.sidebarCheckbox {
+    display: none;
+}
+
+.sidebarCheckbox:checked ~ .sidebar {
+    right: 0px;
+}
+
+.sidebarCheckbox:checked ~ .blackFilter {
+    display: block;
+}

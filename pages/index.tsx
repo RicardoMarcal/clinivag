@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import Link from 'next/link'
+import HeaderSidebar from '../components/HeaderSidebar'
 import styles from '../styles/Home.module.scss'
 
 export default function Home() {
@@ -15,11 +16,13 @@ export default function Home() {
 
             <main className={styles.main}>
                 <div className={styles.wrapper}>
+                    <HeaderSidebar />
                     <img src="clinic.webp" alt="Clinic" className={styles.backgroundImage} />
                     <div className={styles.content}>
                         <img src="univag.png" alt="Univag" className={styles.logo} />
                         <div className={styles.buttons}>
-                            <Link href="/chat"><button>Agendar consulta</button></Link>
+                            <Link href="/chat">Agendar consulta</Link>
+                            <Link href="/gerenciar">Gerenciar agendamentos</Link>
                         </div>
                     </div>
                 </div>
