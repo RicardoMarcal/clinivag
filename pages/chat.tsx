@@ -23,16 +23,25 @@ export default function Home() {
             setCurrent(0)
             setTimeout(() => {
                 setMessages(val => [...val, {
-                    text: `${messageStartWord}! Foi agendado uma consulta com um ${userData.especialista} 
+                    text: `${messageStartWord}! Foi agendada uma consulta com um ${userData.especialista} 
                             no dia ${new Date(userData.data).toLocaleDateString()} às ${userData.horario}. 
                             Lembre-se de verificar o check-in com 1 dia de antecedência para confiar a sua presença.`,
                     sender: 'bot'
                 }])
-                button.disabled = false;
 
                 setAgendamentos([...agendamentos, userData])
-
                 goToBottom()
+
+                setTimeout(() => {
+                    setMessages(val => [...val, {
+                        text: "Desejaria fazer outro atendimento em nossa Clínica?",
+                        sender: 'bot'
+                    }])
+                    button.disabled = false;
+    
+                    goToBottom()
+                }, 800)
+
             }, 800)
         }
 
@@ -61,9 +70,10 @@ export default function Home() {
         }
 
 
-        if(goto >= options.length || goto == past) return
-        
-        button.disabled = true;
+        if(goto >= options.length || goto == past){
+            button.disabled = true;
+            return
+        }
 
         setTimeout(() => {
             setMessages(val => [...val, {
