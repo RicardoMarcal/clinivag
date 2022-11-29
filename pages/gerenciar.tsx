@@ -23,7 +23,7 @@ export default function Home() {
 
             <main className={styles.main}>
                 <div className={styles.wrapper}>
-                    <HeaderSidebar back="chat" />
+                    <HeaderSidebar />
                     <h2>Gerenciar agendamentos</h2>
                     <section>
                         {agendamentos.map((item, index) => (
