@@ -29,8 +29,7 @@ export default function Home() {
                 if(userData.desejaAtendimento === 'Sim'){
                     setMessages(val => [...val, {
                         text: `${messageStartWord}! Foi agendada uma consulta com um ${userData.especialista} 
-                                no dia ${new Date(userData.data).toLocaleDateString()} às ${userData.horario} e
-                                seu ${contact} para contato é ${contactValue}.`,
+                                no dia ${new Date(userData.data).toLocaleDateString()} às ${userData.horario}.`,
                         sender: 'bot'
                     }])
                     setMessages(val => [...val, {
