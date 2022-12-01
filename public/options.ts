@@ -49,7 +49,7 @@ export const options = [
       ]
     },
     {
-      question: "Informe o seu número de protocolo para efetuar o cancelamento.",
+      question: "Informe o numero de protocolo referente ao agendamento que deseja cancelar.",
       input: "protocolo",
       answers: [
         {value: "", goto: 9999},

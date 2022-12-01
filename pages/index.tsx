@@ -30,15 +30,19 @@ export default function Home() {
                     setMessages(val => [...val, {
                         text: `${messageStartWord}! Foi agendada uma consulta com um ${userData.especialista} 
                                 no dia ${new Date(userData.data).toLocaleDateString()} às ${userData.horario} e
-                                seu ${contact} para contato é ${contactValue}.
-                                Lembre-se de verificar o check-in com 1 dia de antecedência para confiar a sua presença.`,
+                                seu ${contact} para contato é ${contactValue}.`,
+                        sender: 'bot'
+                    }])
+                    setMessages(val => [...val, {
+                        text: `Verifique o seu ${contact} de contato para confirmar o agendamento e 
+                                lembre-se de verificar o check-in com 1 dia de antecedência para confirmar a sua presença.`,
                         sender: 'bot'
                     }])
     
                     setAgendamentos([...agendamentos, userData])
                 } else {
                     setMessages(val => [...val, {
-                        text: `${messageStartWord}! O seu agendamento foi cancelado!`,
+                        text: `${messageStartWord}! Agora verifique o seu e-mail de contato ou SMS para confirmar o cancelamento!`,
                         sender: 'bot'
                     }])
 
