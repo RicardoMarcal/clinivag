@@ -9,4 +9,7 @@ export interface userDataType {
     data: Date
     horario: string
     cpf: string
+    email: string
+    telefone: string
+    protocolo: string
 }

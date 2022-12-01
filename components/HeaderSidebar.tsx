@@ -7,7 +7,7 @@ function HeaderSidebar() {
   return (
     <>
     <div className={styles.top}>
-        <Link href="/"><i className="fa-solid fa-arrow-left"></i></Link>
+        <Link href="/home"><i className="fa-solid fa-arrow-left"></i></Link>
         <img src="univag.png" alt="Logo da UNIVAG" />
         <p>Clinivag</p>
         <label htmlFor="sidebarCheckbox"><i className="fa-solid fa-ellipsis-vertical"></i></label>
@@ -20,13 +20,13 @@ function HeaderSidebar() {
         <label htmlFor="sidebarCheckbox"><i className={`fa-solid fa-xmark ${styles.close}`}></i></label>
         <ul>
             <li>
-                <Link href="/">
+                <Link href="/home">
                 <i className="fa-solid fa-house"></i>
                 <p>Página inicial</p>
                 </Link>
             </li>
             <li>
-                <Link href="/chat">
+                <Link href="/">
                 <i className="fa-solid fa-calendar"></i>
                 <p>Agendar consulta</p>
                 </Link>

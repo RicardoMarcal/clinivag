@@ -3,7 +3,8 @@ export const options = [
       question: "Olá, desejaria fazer um atendimento na nossa clínica?",
       input: "select",
       answers: [
-        {value: "Sim", goto: 1}
+        {value: "Sim", goto: 1},
+        {value: "Não, desejo cancelar um agendamento.", goto: 6}
       ]
     },
     {
@@ -34,10 +35,24 @@ export const options = [
       ]
     },
     {
-      question: "Ok! Informe seu CPF para finalizar seu agendamento.",
+      question: "Ok! Informe seu CPF para identificarmos você no dia da consulta.",
       input: "cpf",
       answers: [
         {value: "", goto: 5},
+      ]
+    },
+    {
+      question: "Para finalizar, peço para que você digite seu e-mail ou número de telefone para receber o seu número de protocolo.",
+      input: "emailtelefone",
+      answers: [
+        {value: "", goto: 9999},
+      ]
+    },
+    {
+      question: "Informe o seu número de protocolo para efetuar o cancelamento.",
+      input: "protocolo",
+      answers: [
+        {value: "", goto: 9999},
       ]
     },
   ];
