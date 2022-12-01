@@ -182,8 +182,6 @@ export default function Home() {
         const type = answer.includes('@') ? 'e-mail' : 'telefone'
         const emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)
 
-        alert(type)
-
         if(type == 'telefone' && !(/^\d+$/.test(answer) && answer.length === 11)) {
             alert("Digite um numero de telefone válido (Ex: DD 99999 9999).");
             return current
